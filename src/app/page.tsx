@@ -5,7 +5,7 @@ import Partners from "./components/Partners";
 import UATHR from "./components/UATTR";
 import Features from "./components/features/Features";
 
-export default function () {
+const Page = () => {
   return (
     <main>
       <HeroSection />
@@ -16,4 +16,6 @@ export default function () {
       <GetStarted />
     </main>
   );
-}
+};
+
+export default Page;
