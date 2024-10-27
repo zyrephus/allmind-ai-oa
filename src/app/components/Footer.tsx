@@ -8,11 +8,12 @@ const Footer = () => {
     "Resources": ["Migrate from Carta", "Migrate from Pulley", "Migrate from Shareworks", "409A Valuations", "Privacy Policy", "Blog"],
     "Company": ["Our Team", "Security"]
   }
+  const svg = ["/assets/linkedin.svg", "/assets/x.svg", "/assets/mail.svg"]
 
   return (
     <section className="footer-wrap">
-      <div className="container max-w-[1440px]">
-        <div className="footer-container">
+      <div className="text-left border-b border-black rounded w-full max-w-[1440px] mx-auto">
+        <div className="bg-transparent justify-between items-start pb-16 flex box-border">
           <Link href="/">
             <Image
               src="https://cdn.prod.website-files.com/64b05c5307d994750a3d2dde/655bac9fc699356b43d171a0_Mantle_Logo_Lockup.svg"
@@ -30,11 +31,21 @@ const Footer = () => {
                 </div>
                 {links.map(link => (
                   <div key={link}>
-                    <Link href="/dsdf" className="gap-x-1 gap-y-1 text-black text-sm flex flex-row items-center no-underline hover:text-[#aa8540]"> {/* Added hover effect */}
+                    <Link href="/placeholder" className="gap-x-1 gap-y-1 text-black text-sm flex flex-row items-center no-underline hover:text-[#aa8540]">
                       {link}
+                      {link === "Blog" && (
+                        <Image src="/assets/goto.svg" alt="test" width={19} height={20} className="ml-1"/> 
+                      )}
                     </Link>
                   </div>
                 ))}
+                {title === "Company" && (
+                  <div className="flex flex-none justify-start self-start items-center mt-0 mb-0 ml-0 gap-6">
+                    {svg.map((src, index) => (
+                      <Image key={index} src={src} alt={`Icon ${index}`} width={19} height={20} /> 
+                    ))}
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -44,7 +55,10 @@ const Footer = () => {
           <div className="text-grey-300 mt-0 font-sans text-sm leading-7">
             © 2024 Ten Key Labs Incorporated DBA Mantle
             <strong> · </strong>
-            <Link href="https://tenkeylabs.notion.site/Terms-of-Use-691d79f8431a419988ff5e7a06a5a155">
+            <Link 
+              href="https://tenkeylabs.notion.site/Terms-of-Use-691d79f8431a419988ff5e7a06a5a155"
+              className="hover:text-[#aa8540] hover:underline"
+            >
               Terms of Use
             </Link>
           </div>

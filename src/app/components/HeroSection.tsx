@@ -20,7 +20,7 @@ export default function HeroSection() {
             </p>
           </div>
           {/* REQUEST A DEMO */}
-          <Link href="/login" className="inline-block border border-black text-white bg-black px-6 py-3 rounded-full min-w-[150px]">
+          <Link href="/login" className="inline-block border border-black text-white bg-black px-6 py-3 rounded-full min-w-[150px] hover:bg-[#333438]">
             <div className="flex justify-center">
               <span className="uppercase font-medium tracking-widest text-xs leading-5">REQUEST A DEMO</span>
             </div>

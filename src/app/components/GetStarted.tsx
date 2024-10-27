@@ -14,12 +14,12 @@ const GetStarted = () => {
           </p>
 
           <div className="cta-button-group">
-            <Link href="/seeademo" className="inline-block border border-white text-white bg-transparent px-6 py-3 rounded-full min-w-[150px]">
+            <Link href="/seeademo" className="inline-block border border-white text-white bg-transparent px-6 py-3 rounded-full min-w-[150px] hover:bg-[#333438]">
               <div className="flex justify-center">
                 <span className="uppercase font-medium tracking-widest text-xs leading-5">SEE A DEMO</span>
               </div>
             </Link>
-            <Link href="/getstarted" className="inline-block border border-white text-black bg-white px-6 py-3 rounded-full min-w-[150px]">
+            <Link href="/getstarted" className="inline-block border border-white text-black bg-white px-6 py-3 rounded-full min-w-[150px] hover:bg-[#e9e1db]">
               <div className="flex justify-center">
                 <span className="uppercase font-medium tracking-widest text-xs leading-5">Get Started</span>
               </div>
