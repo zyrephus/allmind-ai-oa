@@ -5,7 +5,7 @@ import Partners from "./components/Partners";
 import UATHR from "./components/UATHR";
 import Features from "./components/features/Features";
 
-export default function Home() {
+export default function () {
   return (
     <main>
       <HeroSection />
