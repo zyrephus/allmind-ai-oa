@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function Navbar() {
   return (
-    <nav className="top-0 left-0 right-0 z-50 flex items-center h-24 px-8 mx-auto bg-[#faf4eee6] backdrop-blur-[10px] border-b border-[#e7dfd8]">
+    <nav className="sticky top-0 left-0 right-0 z-50 flex items-center h-24 px-8 mx-auto bg-[#faf4eee6] backdrop-blur-[10px] border-b border-[#e7dfd8]">
       {/* Left */}
       <Link href="/" className="flex-shrink-0">
         <Image
@@ -16,7 +16,7 @@ export default function Navbar() {
       </Link>
 
       {/* Right */}
-      <div className="flex items-center space-x-9 ml-auto">
+      <div className="flex items-center space-x-8 ml-auto">
         {/* Dropdown for Products */}
         <div className="relative group flex items-center">
           <button className="text-[#0e0f11] hover:text-gray-900 flex items-center">

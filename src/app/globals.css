@@ -3,7 +3,56 @@
 @tailwind utilities;
 
 :root {
-  --font-family--body: var(--font-poppins), sans-serif;
+  --color--fills--whiteish: #faf4ee;
+    --font-family--body: Poppins, sans-serif;
+    --color--text--black: #0e0f11;
+    --font-size-desktop--base: 1rem;
+    --font-family--headline: Poppins, sans-serif;
+    --font-size-desktop--xxxlarge: 3.75rem;
+    --font-size-tablet--xxxlarge: 3rem;
+    --font-size-mobile--xxxlarge: 2.25rem;
+    --font-size-desktop--xxlarge: 3rem;
+    --font-size-tablet--xxlarge: 2.5rem;
+    --font-size-mobile--xxlarge: 1.75rem;
+    --font-size-desktop--xlarge: 2.25rem;
+    --font-size-tablet--xlarge: 2rem;
+    --font-size-mobile--xlarge: 1.5rem;
+    --font-size-desktop--large: 1.5rem;
+    --font-size-tablet--large: 1.5rem;
+    --font-size-mobile--large: 1.25rem;
+    --font-size-desktop--medium: 1.125rem;
+    --font-size-tablet--medium: 1.125rem;
+    --font-size-mobile--medium: 1rem;
+    --font-size-tablet--base: 1rem;
+    --font-size-mobile--base: .875rem;
+    --color--accents--gold-500: #aa8540;
+    --rem-small: .75rem;
+    --rem-xxxlarge: 4rem;
+    --rem-baseline\<deleted\|variable-aac41369-f487-bd6b-8fb3-c029f1765a04\>: 1rem;
+    --color--fills--sand-100: #f6efe7;
+    --rem-large\<deleted\|variable-1ad131c5-9c5c-c493-74dc-98f6a489295f\>: 2rem;
+    --rem-xxlarge\<deleted\|variable-eb16e58c-055c-650a-3280-534ed77e4d78\>: 3rem;
+    --font-size-desktop--xsmall: .75rem;
+    --color--charcoal\<deleted\|variable-411cf931-f279-98c6-6c69-2a87a22f6930\>: #707174;
+    --color--text--white: white;
+    --color--fills--divider-light: #e7dfd8;
+    --color--fills--sand-500: #efe7df;
+    --color--text--grey-500: #393a3c;
+    --color--fills--sand-300: #f6efe7;
+    --font-size-desktop--small: .875rem;
+    --color--text--grey-300: #707174;
+    --rem-mmedium\<deleted\|variable-f727ea83-068f-7577-6918-188e5463d0ad\>: 1.75rem;
+    --rem-xlarge\<deleted\|variable-e410d5c1-27d7-6a86-7db6-bf274233b6e2\>: 2.5rem;
+    --rem-medium\<deleted\|variable-dde31cd7-b018-277a-048d-f2cb268e9135\>: 1.5rem;
+    --color--accents--gold-300: #c69f59;
+    --color--fills--whiteish-glass: #faf4eee6;
+    --color--text--grey-100: #a1a5ad;
+    --color--fills--black-glass: #0e0f11f2;
+    --color--accents--terracotta-500: #c17373;
+    --color--accents--green-500: #529296;
+    --color--accents--gold-700: #967331;
+    --color--accents--terracotta-300: #d88686;
+    --color--accents--terracotta-700: #ab5b5b;
 }
 
 body {
@@ -40,4 +89,71 @@ body {
 }
 article, aside, details, figcaption, figure, footer, header, hgroup, main, menu, nav, section, summary {
   display: block;
+}
+
+.container {
+  text-align: left;
+  border-bottom: 1px #000;
+  border-radius: 1px;
+  width: 100%;
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.no-padding-bottom {
+  padding-bottom: 0 !important;
+}
+
+.centered {
+  text-align: center;
+}
+
+.centered-subheading {
+  max-width: 33rem;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 2;
+}
+
+.card-sand {
+  padding: var(--rem-xxxlarge) var(--rem-baseline\<deleted\|variable-aac41369-f487-bd6b-8fb3-c029f1765a04\>);
+  background-color: var(--color--fills--sand-300);
+  border-radius: 2rem;
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+}
+
+.co-pilot-animation-wrap {
+  padding-left: 6.25rem;
+  padding-right: 6.25rem;
+}
+
+.w-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h5 {
+  font-family: var(--font-family--headline);
+  font-size: var(--font-size-desktop--medium);
+  margin-top: 0;
+  margin-bottom: 0;
+  font-weight: 500;
+  line-height: 1.8;
+}
+
+.column-text {
+  padding-right: var(--rem-xxlarge\<deleted\|variable-eb16e58c-055c-650a-3280-534ed77e4d78\>);
+  padding-left: var(--rem-xxlarge\<deleted\|variable-eb16e58c-055c-650a-3280-534ed77e4d78\>);
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  display: flex;
 }
