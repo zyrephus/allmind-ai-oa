@@ -2,7 +2,7 @@ import Features2 from "./components/Features2";
 import GetStarted from "./components/GetStarted";
 import HeroSection from "./components/HeroSection";
 import Partners from "./components/Partners";
-import UATHR from "./components/UATHR";
+import UATHR from "./components/UATTR";
 import Features from "./components/features/Features";
 
 export default function () {

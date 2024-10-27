@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from 'react'; // Import useEffect, useRef, and useState
 import { motion } from 'framer-motion'; // Import motion from framer-motion
 
-const UATHR = () => {
+const UATTR = () => {
   const [isVisible, setIsVisible] = useState(false); // State to track visibility
   const ref = useRef<HTMLDivElement | null>(null); // Ref for the component
 
@@ -50,4 +50,4 @@ const UATHR = () => {
   );
 };
 
-export default UATHR;
+export default UATTR;
