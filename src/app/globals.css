@@ -215,6 +215,14 @@ h6 {
   line-height: 1.8;
 }
 
+.columns-top {
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  overflow: auto;
+}
+
 .column-text {
   padding-right: var(--rem-xxlarge\<deleted\|variable-eb16e58c-055c-650a-3280-534ed77e4d78\>);
   padding-left: var(--rem-xxlarge\<deleted\|variable-eb16e58c-055c-650a-3280-534ed77e4d78\>);
@@ -224,6 +232,23 @@ h6 {
   align-items: center;
   height: 100%;
   display: flex;
+}
+
+.column-image {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  padding-left: 0;
+  padding-right: 0;
+  display: flex;
+  overflow: hidden;
+}
+
+.sidebyside {
+  padding: var(--rem-xxlarge\<deleted\|variable-eb16e58c-055c-650a-3280-534ed77e4d78\>) 0px 0px;
+  border-style: none;
+  min-height: 100px;
 }
 
 .partner-logos {
