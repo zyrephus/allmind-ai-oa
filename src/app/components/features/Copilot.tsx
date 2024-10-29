@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
-const TYPING_SPEED = 50;  // Adjust typing speed (ms per character)
-const DELETING_SPEED = 20; // Adjust deleting speed (ms per character)
+const TYPING_SPEED = 50;  // Typing speed (ms per character)
+const DELETING_SPEED = 20; // Deleting speed (ms per character)
 const PAUSE_DURATION = 1000; // Pause before deleting or moving to next string (ms)
 
 const stringsToType = [
@@ -17,8 +17,37 @@ const Copilot = () => {
   const [isDeleting, setIsDeleting] = useState(false); // Track if we are deleting
   const [loopIndex, setLoopIndex] = useState(0); // Index of current string
   const [cursorVisible, setCursorVisible] = useState(true); // Control cursor blink
+  const [hasStarted, setHasStarted] = useState(false); // Control when animation starts
+
+  const copilotRef = useRef<HTMLDivElement>(null); // Ref for the container
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setHasStarted(true); // Start the animation when the component is in view
+            observer.disconnect(); // Stop observing once the animation starts
+          }
+        });
+      },
+      {
+        threshold: 0.1, // Trigger when at least 10% of the component is visible
+      }
+    );
+
+    if (copilotRef.current) {
+      observer.observe(copilotRef.current);
+    }
+
+    return () => {
+      if (copilotRef.current) observer.unobserve(copilotRef.current);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!hasStarted) return; // Only start typing if the component is in view
+
     const handleTyping = () => {
       const currentString = stringsToType[loopIndex % stringsToType.length]; // Loop through strings
       if (isDeleting) {
@@ -43,20 +72,22 @@ const Copilot = () => {
     const typingTimeout = setTimeout(handleTyping, isDeleting ? DELETING_SPEED : TYPING_SPEED);
 
     return () => clearTimeout(typingTimeout);
-  }, [text, isDeleting, loopIndex]);
+  }, [text, isDeleting, loopIndex, hasStarted]);
 
   useEffect(() => {
+    if (!hasStarted) return;
+
     const cursorBlinkTimeout = setInterval(() => {
       setCursorVisible((prev) => !prev);
     }, 500); // Cursor blink interval
 
     return () => clearInterval(cursorBlinkTimeout);
-  }, []);
+  }, [hasStarted]);
 
   return (
     <>
       {/* Co-Pilot */}
-      <div className="container centered card-sand flex flex-col items-center">
+      <div ref={copilotRef} className="container centered card-sand flex flex-col items-center">
         <div className="co-pilot-animation-wrap w-container flex flex-col items-center">
           <Image
             src="https://cdn.prod.website-files.com/64b05c5307d994750a3d2dde/64b05c5307d994750a3d2e05_temp_AI.png"
