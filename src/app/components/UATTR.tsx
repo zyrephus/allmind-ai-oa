@@ -1,5 +1,7 @@
 "use client"; // Marking this component as a client component
 
+import Image from 'next/image'; // Import Image component from Next.js
+
 import React, { useEffect, useRef, useState } from 'react'; // Import useEffect, useRef, and useState
 import { motion } from 'framer-motion'; // Import motion from framer-motion
 
@@ -44,6 +46,14 @@ const UATTR = () => {
             thriving public company. Seamless assistance
             throughout your journey.
           </p>
+          <div className="flex justify-center mt-6">
+            <Image
+              src="/assets/line.png" // Path to the image
+              alt="Line graphic" 
+              width={1000}
+              height={200}
+            />
+          </div>
         </div>
       </motion.div>
     </section>
