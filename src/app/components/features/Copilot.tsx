@@ -1,8 +1,58 @@
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
-import React from "react";
+const TYPING_SPEED = 50;  // Adjust typing speed (ms per character)
+const DELETING_SPEED = 20; // Adjust deleting speed (ms per character)
+const PAUSE_DURATION = 1000; // Pause before deleting or moving to next string (ms)
+
+const stringsToType = [
+  "Will I have enough stock options for my hiring plan?",
+  "How much would I get if I sold for $10 billion?",
+  "What will my ownership be after my SAFEs convert?",
+];
 
 const Copilot = () => {
+  const [text, setText] = useState(""); // Current text being typed
+  const [isDeleting, setIsDeleting] = useState(false); // Track if we are deleting
+  const [loopIndex, setLoopIndex] = useState(0); // Index of current string
+  const [cursorVisible, setCursorVisible] = useState(true); // Control cursor blink
+
+  useEffect(() => {
+    const handleTyping = () => {
+      const currentString = stringsToType[loopIndex % stringsToType.length]; // Loop through strings
+      if (isDeleting) {
+        // Delete text
+        if (text.length > 0) {
+          setText((prev) => prev.substring(0, prev.length - 1));
+        } else {
+          setIsDeleting(false); // Finished deleting, start typing next string
+          setLoopIndex((prev) => prev + 1);
+        }
+      } else {
+        // Type text
+        if (text.length < currentString.length) {
+          setText((prev) => currentString.substring(0, prev.length + 1));
+        } else {
+          // Pause once the string is fully typed
+          setTimeout(() => setIsDeleting(true), PAUSE_DURATION);
+        }
+      }
+    };
+
+    const typingTimeout = setTimeout(handleTyping, isDeleting ? DELETING_SPEED : TYPING_SPEED);
+
+    return () => clearTimeout(typingTimeout);
+  }, [text, isDeleting, loopIndex]);
+
+  useEffect(() => {
+    const cursorBlinkTimeout = setInterval(() => {
+      setCursorVisible((prev) => !prev);
+    }, 500); // Cursor blink interval
+
+    return () => clearInterval(cursorBlinkTimeout);
+  }, []);
+
   return (
     <>
       {/* Co-Pilot */}
@@ -15,8 +65,23 @@ const Copilot = () => {
             height={120}
           />
 
-          {/* Need to add text here */}
-          <Image src="/assets/form.png" alt="Form" width={1120} height={186} />
+          {/* Typing animation on top of form.png */}
+          <div className="relative">
+            <Image src="/assets/form.png" alt="Form" width={1120} height={186} />
+            {/* Animated typing text */}
+            <div className="absolute top-0 left-0 flex items-center justify-center w-full h-full">
+              <motion.div className="text-lg font-sans font-medium">
+                {text}
+                <span
+                  className={`inline-block w-[0.5ch] ${
+                    cursorVisible ? "opacity-100" : "opacity-0"
+                  }`}
+                >
+                  |
+                </span>
+              </motion.div>
+            </div>
+          </div>
         </div>
 
         <div className="margin-bottom-small">
