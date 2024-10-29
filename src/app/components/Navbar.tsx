@@ -1,6 +1,7 @@
 "use client";  // Ensure the component is client-side for using hooks
 
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion"; // Import Framer Motion components
 import Image from "next/image";
 import Link from "next/link";
 
@@ -9,6 +10,12 @@ export default function Navbar() {
 
   const toggleDropdown = (dropdown: string) => {
     setOpenDropdown(openDropdown === dropdown ? null : dropdown); // Toggle between opening and closing the dropdown
+  };
+
+  const dropdownVariants = {
+    hidden: { opacity: 0, y: -10, scale: 0.95 },
+    visible: { opacity: 1, y: 0, scale: 1 },
+    exit: { opacity: 0, y: -10, scale: 0.95 },
   };
 
   return (
@@ -40,18 +47,36 @@ export default function Navbar() {
               className="ml-1 w-4 h-4 opacity-50"
             />
           </button>
-          {openDropdown === "products" && (
-            <div className="absolute top-full mt-2 w-48 bg-black bg-opacity-80 text-white rounded-2xl shadow-lg py-4">
-              <ul className="space-y-2">
-                <li>
-                  <Link href="/products/feature1" className="block px-4 py-2 hover:bg-[#333438] rounded-lg">Feature 1</Link>
-                </li>
-                <li>
-                  <Link href="/products/feature2" className="block px-4 py-2 hover:bg-[#333438] rounded-lg">Feature 2</Link>
-                </li>
-              </ul>
-            </div>
-          )}
+          <AnimatePresence>
+            {openDropdown === "products" && (
+              <motion.div
+                className="absolute top-full mt-2 w-60 bg-black bg-opacity-80 text-white rounded-2xl shadow-lg py-4"
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                variants={dropdownVariants}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
+              >
+                <ul className="space-y-2">
+                  <li>
+                    <Link href="/solutions/solution1" className="block px-4 py-2 hover:bg-[#333438] rounded-lg">
+                      Cap Table Management
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/solutions/solution2" className="block px-4 py-2 hover:bg-[#333438] rounded-lg">
+                      Planning & Forecasting
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/solutions/solution2" className="block px-4 py-2 hover:bg-[#333438] rounded-lg">
+                      LP Automation
+                    </Link>
+                  </li>
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* Dropdown for Solutions */}
@@ -69,18 +94,36 @@ export default function Navbar() {
               className="ml-1 w-4 h-4 opacity-50"
             />
           </button>
-          {openDropdown === "solutions" && (
-            <div className="absolute top-full mt-2 w-48 bg-black bg-opacity-80 text-white rounded-2xl shadow-lg py-4">
-              <ul className="space-y-2">
-                <li>
-                  <Link href="/solutions/solution1" className="block px-4 py-2 hover:bg-[#333438] rounded-lg">Solution 1</Link>
-                </li>
-                <li>
-                  <Link href="/solutions/solution2" className="block px-4 py-2 hover:bg-[#333438] rounded-lg">Solution 2</Link>
-                </li>
-              </ul>
-            </div>
-          )}
+          <AnimatePresence>
+            {openDropdown === "solutions" && (
+              <motion.div
+                className="absolute top-full mt-2 w-48 bg-black bg-opacity-80 text-white rounded-2xl shadow-lg py-4"
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                variants={dropdownVariants}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
+              >
+                <ul className="space-y-2">
+                  <li>
+                    <Link href="/solutions/solution1" className="block px-4 py-2 hover:bg-[#333438] rounded-lg">
+                      For Founders
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/solutions/solution2" className="block px-4 py-2 hover:bg-[#333438] rounded-lg">
+                      For Limited Partners
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/solutions/solution2" className="block px-4 py-2 hover:bg-[#333438] rounded-lg">
+                      For Law Firms
+                    </Link>
+                  </li>
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* Dropdown for Resources */}
@@ -98,18 +141,37 @@ export default function Navbar() {
               className="ml-1 w-4 h-4 opacity-50"
             />
           </button>
-          {openDropdown === "resources" && (
-            <div className="absolute top-full mt-2 w-48 bg-black bg-opacity-80 text-white rounded-2xl shadow-lg py-4">
-              <ul className="space-y-2">
-                <li>
-                  <Link href="/resources/resource1" className="block px-4 py-2 hover:bg-[#333438] rounded-lg">Resource 1</Link>
-                </li>
-                <li>
-                  <Link href="/resources/resource2" className="block px-4 py-2 hover:bg-[#333438] rounded-lg">Resource 2</Link>
-                </li>
-              </ul>
-            </div>
-          )}
+          <AnimatePresence>
+            {openDropdown === "resources" && (
+              <motion.div
+                className="absolute top-full mt-2 w-48 bg-black bg-opacity-80 text-white rounded-2xl shadow-lg py-4"
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                variants={dropdownVariants}
+                transition={{ duration: 0.2, ease: "easeInOut" }}
+              >
+                <ul className="space-y-2">
+                  <li>
+                    <Link href="/resources/resource1" className="block px-4 py-2 hover:bg-[#333438] rounded-lg">
+                      Migrate from Carta
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/resources/resource2" className="block px-4 py-2 hover:bg-[#333438] rounded-lg">
+                      409A Valuations
+                    </Link>
+                  </li>
+                  <li className="flex items-center">
+                    <Link href="/resources/resource2" className="block px-4 py-2 hover:bg-[#333438] rounded-lg">
+                      Blog
+                    </Link>
+                    <Image src="/assets/goto.svg" alt="test" width={19} height={20} className="ml-1"/> 
+                  </li>
+                </ul>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
         {/* Login */}
